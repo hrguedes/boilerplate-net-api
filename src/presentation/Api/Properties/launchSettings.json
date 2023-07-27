@@ -1,0 +1,47 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:20498",
+      "sslPort": 44324
+    }
+  },
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:5274",
+      "environmentVariables": {
+        "MONGO_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
+        "REDIS_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7175;http://localhost:5274",
+      "environmentVariables": {
+        "MONGO_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
+        "REDIS_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "MONGO_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
+        "REDIS_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
