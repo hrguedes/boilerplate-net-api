@@ -30,11 +30,15 @@ if you are going to use it, read the code and see if it fits
 ## Roadmap
 
 - Finish CRUD Company
-    - Create
-    - Read
-    - Update
-    - Remove
-    - List All
+    - [x]  Create
+        - [x] Test - OK 
+    - [x]  Read
+       - [x] Test - OK 
+    - [x]  Update
+       - [x] Test - OK 
+    - [x]  Remove
+       - [x] Test - OK 
+    - [ ] List All
 - Alter class MassTransit to Generic class
 - Create Filter and Pagination
 
