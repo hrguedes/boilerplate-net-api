@@ -1,8 +1,8 @@
-using Entities.Base;
+using Dto.Base;
 
-namespace Entities;
+namespace Dto.Company.Request;
 
-public class Company : BaseAudityEntity
+public class EditCompanyRequest : BaseDto
 {
     public string FullName { get; set; }
     public string SocialName { get; set; }

@@ -22,6 +22,9 @@ public static class DependencyInjection
         // Integrations
 
         // massTransit
+        
+        // AutoMapper
+        services.AddAutoMapper(typeof(MappingProfile));
 
         // return
         return services;

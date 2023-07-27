@@ -26,6 +26,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\domain\Application\Application.csproj" />
       <ProjectReference Include="..\..\domain\Entities\Entities.csproj" />
+      <ProjectReference Include="..\..\infra\Resolver\Resolver.csproj" />
     </ItemGroup>
 
 </Project>

@@ -7,9 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\infra\Dto\Dto.csproj"/>
-        <ProjectReference Include="..\..\shared\Base\Base.csproj"/>
-        <ProjectReference Include="..\Entities\Entities.csproj"/>
+        <ProjectReference Include="..\..\infra\Dto\Dto.csproj" />
+        <ProjectReference Include="..\..\shared\Base\Base.csproj" />
+        <ProjectReference Include="..\Entities\Entities.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="12.0.1" />
     </ItemGroup>
 
 </Project>
