@@ -44,4 +44,24 @@ public class CompanyController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
+    
+    [HttpPost("search")]
+    [ProducesResponseType(typeof(ReturnOk<List<CompanyResponse>>), 200)]
+    [ProducesResponseType(typeof(ReturnOk<List<CompanyResponse>>), 400)]
+    [ProducesResponseType(typeof(string), 500)]
+    public async Task<IActionResult> ListCompaniesByFilter(
+        [FromServices] ICompanyService company,
+        [FromBody] ListCompaniesRequest request
+    )
+    {
+        try
+        {
+            var resp = await company.ListAllCompanies(request);
+            return StatusCode(resp.StatusCode, resp);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, e.Message);
+        }
+    }
 }

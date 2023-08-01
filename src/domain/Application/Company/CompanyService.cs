@@ -60,8 +60,9 @@ public class CompanyService : ICompanyService
         return new ReturnOk<CompanyResponse>(_mapper.Map<CompanyResponse>(company), new[] { "Company removed" });
     }
 
-    public Task<ReturnOk<List<CompanyResponse>>> ListAllCompanies(ListCompaniesRequest request)
+    public async Task<ReturnOk<ListCompanyResponse>> ListAllCompanies(ListCompaniesRequest request)
     {
+        var collection = await _companyRepository.ListCompaniesByFilter(request.name, request.id);
         throw new NotImplementedException();
     }
 }
