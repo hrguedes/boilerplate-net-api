@@ -10,4 +10,8 @@
       <PackageReference Include="MessagePack" Version="1.9.11" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Consts\Consts.csproj" />
+    </ItemGroup>
+
 </Project>

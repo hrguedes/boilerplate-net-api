@@ -9,6 +9,8 @@
     <ItemGroup>
         <ProjectReference Include="..\..\infra\Dto\Dto.csproj" />
         <ProjectReference Include="..\..\shared\Base\Base.csproj" />
+        <ProjectReference Include="..\..\shared\Consts\Consts.csproj" />
+        <ProjectReference Include="..\..\shared\Utils\Utils.csproj" />
         <ProjectReference Include="..\Entities\Entities.csproj" />
     </ItemGroup>
 

@@ -6,10 +6,10 @@ public interface IBaseRepository<T>
     Task InsertRecordAsync(T record);
     List<T> LoadRecords();
     Task<List<T>> LoadRecordsAsync();
-    T LoadRecordById(Guid id);
-    Task<T> LoadRecordByIdAsync(Guid id);
-    void UpdateRecord(Guid id, T record);
-    Task UpdateRecordAsync(Guid id, T record);
-    void DeleteRecord(Guid id);
-    Task DeleteRecordAsync(Guid id);
+    T LoadRecordById(string id);
+    Task<T> LoadRecordByIdAsync(string id);
+    void UpdateRecord(string id, T record);
+    Task UpdateRecordAsync(string id, T record);
+    void DeleteRecord(string id);
+    Task DeleteRecordAsync(string id);
 }

@@ -11,8 +11,8 @@ public class BaseRepository<T> : IBaseRepository<T>
 
     protected BaseRepository()
     {
-        Collection = new MongoClient(LaunchSettings.ConnectionString)
-            .GetDatabase(LaunchSettings.Database)
+        Collection = new MongoClient(LaunchSettings.MONGO_CONNECTION_STRING)
+            .GetDatabase(LaunchSettings.NOME_BANCO_BASE)
             .GetCollection<T>(typeof(T).Name);
     }
 
@@ -36,39 +36,39 @@ public class BaseRepository<T> : IBaseRepository<T>
         return await Collection.Find(new BsonDocument()).ToListAsync();
     }
 
-    public T LoadRecordById(Guid id)
+    public T LoadRecordById(string id)
     {
-        var filter = Builders<T>.Filter.Eq("_id", id);
+        var filter = Builders<T>.Filter.Eq("_id", new ObjectId(id));
         return Collection.Find(filter).FirstOrDefault();
     }
 
-    public async Task<T> LoadRecordByIdAsync(Guid id)
+    public async Task<T> LoadRecordByIdAsync(string id)
     {
-        var filter = Builders<T>.Filter.Eq("_id", id);
+        var filter = Builders<T>.Filter.Eq("_id", new ObjectId(id));
         return await Collection.Find(filter).FirstOrDefaultAsync();
     }
 
-    public void UpdateRecord(Guid id, T record)
+    public void UpdateRecord(string id, T record)
     {
-        var filter = Builders<T>.Filter.Eq("_id", id);
+        var filter = Builders<T>.Filter.Eq("_id", new ObjectId(id));
         Collection.ReplaceOne(filter, record);
     }
 
-    public async Task UpdateRecordAsync(Guid id, T record)
+    public async Task UpdateRecordAsync(string id, T record)
     {
-        var filter = Builders<T>.Filter.Eq("_id", id);
+        var filter = Builders<T>.Filter.Eq("_id", new ObjectId(id));
         await Collection.ReplaceOneAsync(filter, record);
     }
 
-    public void DeleteRecord(Guid id)
+    public void DeleteRecord(string id)
     {
-        var filter = Builders<T>.Filter.Eq("_id", id);
+        var filter = Builders<T>.Filter.Eq("_id", new ObjectId(id));
         Collection.DeleteOne(filter);
     }
 
-    public async Task DeleteRecordAsync(Guid id)
+    public async Task DeleteRecordAsync(string id)
     {
-        var filter = Builders<T>.Filter.Eq("_id", id);
+        var filter = Builders<T>.Filter.Eq("_id", new ObjectId(id));
         await Collection.DeleteOneAsync(filter);
     }
 }

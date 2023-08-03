@@ -34,7 +34,7 @@ public class EditCompanyTest
         // Arrange
         var request = new EditCompanyRequest()
         {
-            Id = Guid.NewGuid(),
+            Id = Guid.NewGuid().ToString(),
             FullName = "Company One Limited",
             SocialName = "Company One",
             Document = "123.123.123/000123"
@@ -56,14 +56,14 @@ public class EditCompanyTest
         // Arrange
         var request = new EditCompanyRequest()
         {
-            Id = Guid.NewGuid(),
+            Id = Guid.NewGuid().ToString(),
             FullName = "Company One Limited",
             SocialName = "Company One",
             Document = "123.123.123/000123"
         };
         
         // mock
-        _companyRepository.Setup(repo => repo.LoadRecordByIdAsync(request.Id)).ReturnsAsync(new Company()
+        _companyRepository.Setup(repo => repo.LoadRecordByIdAsync(request.Id)).ReturnsAsync(new Company(Guid.NewGuid().ToString())
         {
             Id = Guid.NewGuid().ToString(),
             FullName = "Company One Limited",

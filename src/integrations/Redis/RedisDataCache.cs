@@ -13,26 +13,26 @@ public class RedisDataCache
     {
         var configurationOptions = new ConfigurationOptions
         {
-            KeepAlive = Convert.ToInt32(TimeSpan.FromSeconds(LaunchSettings.KeepAlive).TotalMilliseconds),
-            AsyncTimeout = Convert.ToInt32(TimeSpan.FromSeconds(LaunchSettings.ResponseTimeout).TotalMilliseconds),
-            ConnectTimeout = Convert.ToInt32(TimeSpan.FromSeconds(LaunchSettings.ConnectTimeout).TotalMilliseconds),
+            KeepAlive = Convert.ToInt32(TimeSpan.FromSeconds(Convert.ToDouble(LaunchSettings.KEEP_ALIVE)).TotalMilliseconds),
+            AsyncTimeout = Convert.ToInt32(TimeSpan.FromSeconds(Convert.ToDouble(LaunchSettings.RESPONSE_TIMEOUT)).TotalMilliseconds),
+            ConnectTimeout = Convert.ToInt32(TimeSpan.FromSeconds(Convert.ToDouble(LaunchSettings.CONNECT_TIMEOUT)).TotalMilliseconds),
             ConnectRetry = 2,
             ReconnectRetryPolicy = new LinearRetry(100)
         };
-       var endpoints = LaunchSettings.RedisDatabases;
+       var endpoints = LaunchSettings.REDIS_DATABASES;
         foreach (var hostAndPort in endpoints)
         {
             configurationOptions.EndPoints.Add(hostAndPort);
         }
         
         redis = ConnectionMultiplexer.Connect(configurationOptions);
-        keyPrefix = LaunchSettings.KeyPrefix;
+        keyPrefix = LaunchSettings.KEY_PREFIXO;
     }
 
 
     public bool GetValue(string key, out string? value)
     {
-        var connection = ConnectionMultiplexer.Connect(LaunchSettings.RedisConnectionString);
+        var connection = ConnectionMultiplexer.Connect(LaunchSettings.REDIS_CONNECTION_STRING);
         var db = connection.GetDatabase();
         var redisValue = db.StringGet(key);
 

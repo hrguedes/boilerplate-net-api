@@ -1,6 +1,10 @@
-﻿using Application.Company;
+﻿using Application.Autenticacao;
+using Application.Autenticacao.Interfaces;
+using Application.Company;
 using Application.Company.Interfaces;
 using Data.Repositories;
+using Data.Repositories.Autenticacao;
+using Entities.Autenticacao.Interfaces;
 using Entities.Intefaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,10 +19,15 @@ public static class DependencyInjection
 
         // Services
         services.AddScoped<ICompanyService, CompanyService>();
+        services.AddScoped<IAutenticarUsuarioService, AutenticarUsuarioService>();
 
         // Repositories
         services.AddScoped<ICompanyRepository, CompanyRepository>();
-
+        services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+        services.AddScoped<IRegraRepository, RegraRepository>();
+        services.AddScoped<ITelaRepository, TelaRepository>();
+        services.AddScoped<ISessaoRepository, SessaoRepository>();
+        
         // Integrations
 
         // massTransit

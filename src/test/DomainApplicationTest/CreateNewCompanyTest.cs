@@ -109,7 +109,7 @@ public class CreateNewCompanyTest
 
         // Mock
         _companyRepository.Setup(repo => repo
-            .SearchCompany(request.Document, request.SocialName, request.FullName)).ReturnsAsync(new Company()
+            .SearchCompany(request.Document, request.SocialName, request.FullName)).ReturnsAsync(new Company(Guid.NewGuid().ToString())
         {
             FullName = "Company One LTDA",
             SocialName = "Company One",

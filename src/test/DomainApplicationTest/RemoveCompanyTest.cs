@@ -34,7 +34,7 @@ public class RemoveCompanyTest
         // Arrange
         var request = new EditCompanyRequest()
         {
-            Id = Guid.NewGuid(),
+            Id = Guid.NewGuid().ToString(),
             FullName = "Company One Limited",
             SocialName = "Company One",
             Document = "123.123.123/000123"
@@ -54,7 +54,7 @@ public class RemoveCompanyTest
     public async Task RemoveCompany_ValidScenario_ShouldReturnSuccessResponse()
     {
         // Arrange
-        var id = Guid.NewGuid();
+        var id = Guid.NewGuid().ToString();
         var request = new EditCompanyRequest()
         {
             Id = id,
@@ -64,7 +64,7 @@ public class RemoveCompanyTest
         };
         
         // mock
-        _companyRepository.Setup(repo => repo.LoadRecordByIdAsync(request.Id)).ReturnsAsync(new Company()
+        _companyRepository.Setup(repo => repo.LoadRecordByIdAsync(request.Id)).ReturnsAsync(new Company(Guid.NewGuid().ToString())
         {
             Id = id.ToString(),
             FullName = "Company One Limited",

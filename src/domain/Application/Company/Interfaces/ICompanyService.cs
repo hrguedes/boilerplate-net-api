@@ -8,6 +8,6 @@ public interface ICompanyService
 {
     Task<ReturnOk<CompanyResponse>> CreateNewCompany(CreateNewCompanyRequest request);
     Task<ReturnOk<CompanyResponse>> EditCompany(EditCompanyRequest request);
-    Task<ReturnOk<CompanyResponse>> RemoveCompany(Guid id);
+    Task<ReturnOk<CompanyResponse>> RemoveCompany(string id);
     Task<ReturnOk<ListCompanyResponse>> ListAllCompanies(ListCompaniesRequest request);
 }

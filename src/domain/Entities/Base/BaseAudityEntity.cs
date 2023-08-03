@@ -8,19 +8,26 @@ public class BaseAudityEntity
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
+    public DateTime DataCricao { get; set; }
+    public DateTime? DataRemovido { get; set; }
+    public DateTime DataAtualizacao { get; set; }
+    public bool RegistroRemovido { get; set; }
+    public string? UsuarioCriacaoId { get; set; }
+    public string? UsuarioAtualizacaoId { get; set; }
 
-    public DateTime CreateAt { get; set; }
-    public DateTime? RemovedAt { get; set; }
-    public DateTime UpdateAt { get; set; }
-    public bool Removed { get; set; }
-    public Guid? UserCreateId { get; set; }
-    public Guid? userUpdateId { get; set; }
-
-    public BaseAudityEntity()
+    public BaseAudityEntity(string usuarioId)
     {
-        if (Id != null) return;
-        Removed = false;
-        UpdateAt = DateTime.Now;
-        CreateAt = DateTime.Now;
+        if (Id != null)
+        {
+            UsuarioAtualizacaoId = usuarioId;
+            DataAtualizacao = DateTime.Now;
+        }
+        else
+        {
+            UsuarioCriacaoId = usuarioId;
+            RegistroRemovido = false;
+            DataAtualizacao = DateTime.Now;
+            DataCricao = DateTime.Now;
+        }
     }
 }

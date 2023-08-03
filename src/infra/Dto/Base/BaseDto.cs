@@ -2,7 +2,7 @@ namespace Dto.Base;
 
 public class BaseDto
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
     public DateTime CreateAt { get; set; }
     public DateTime? RemovedAt { get; set; }
     public DateTime UpdateAt { get; set; }

@@ -51,7 +51,7 @@ public class CompanyService : ICompanyService
         return new ReturnOk<CompanyResponse>(_mapper.Map<CompanyResponse>(request), new[] { "Company updated" });
     }
 
-    public async Task<ReturnOk<CompanyResponse>> RemoveCompany(Guid id)
+    public async Task<ReturnOk<CompanyResponse>> RemoveCompany(string id)
     {
         var company = await _companyRepository.LoadRecordByIdAsync(id);
         if (company == null)
