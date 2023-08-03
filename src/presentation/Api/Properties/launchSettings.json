@@ -17,7 +17,18 @@
       "applicationUrl": "http://localhost:5274",
       "environmentVariables": {
         "MONGO_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
-        "REDIS_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
+        "NOME_BANCO_BASE": "BOILERPLATE_BASE",
+        "REDIS_CONNECTION_STRING": "192.168.0.187:6379,password=desenv",
+        "KEEP_ALIVE": "10",
+        "RESPONSE_TIMEOUT": "10",
+        "CONNECT_TIMEOUT": "10",
+        "KEY_PREFIXO": "IOB_CACHE",
+        "PASTA_TEMP_UPLOAD_PLANILHAS": "",
+        "PASTA_TEMP_UPLOAD_PLANILHAS_TESTS": "",
+        "JWT_SECRET": "fedaf7d8863b48e197b9287d492b708e",
+        "ENCRYPTION_KEY": "fedaf7d8863b48e197b9287d492b908e",
+        "SENHA_PADRAO": "IOBSUP3R",
+        "TEMPO_SESSAO_HORAS": "2",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
@@ -29,7 +40,18 @@
       "applicationUrl": "https://localhost:7175;http://localhost:5274",
       "environmentVariables": {
         "MONGO_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
-        "REDIS_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
+        "NOME_BANCO_BASE": "BOILERPLATE_BASE",
+        "REDIS_CONNECTION_STRING": "192.168.0.187:6379,password=desenv",
+        "KEEP_ALIVE": "10",
+        "RESPONSE_TIMEOUT": "10",
+        "CONNECT_TIMEOUT": "10",
+        "KEY_PREFIXO": "IOB_CACHE",
+        "PASTA_TEMP_UPLOAD_PLANILHAS": "",
+        "PASTA_TEMP_UPLOAD_PLANILHAS_TESTS": "",
+        "JWT_SECRET": "fedaf7d8863b48e197b9287d492b708e",
+        "ENCRYPTION_KEY": "fedaf7d8863b48e197b9287d492b908e",
+        "SENHA_PADRAO": "IOBSUP3R",
+        "TEMPO_SESSAO_HORAS": "2",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
@@ -39,7 +61,18 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "MONGO_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
-        "REDIS_CONNECTION_STRING": "mongodb://developer:%40Developer@192.168.0.187/?authMechanism=SCRAM-SHA-1&authSource=admin",
+        "NOME_BANCO_BASE": "BOILERPLATE_BASE",
+        "REDIS_CONNECTION_STRING": "192.168.0.187:6379,password=desenv",
+        "KEEP_ALIVE": "10",
+        "RESPONSE_TIMEOUT": "10",
+        "CONNECT_TIMEOUT": "10",
+        "KEY_PREFIXO": "IOB_CACHE",
+        "PASTA_TEMP_UPLOAD_PLANILHAS": "",
+        "PASTA_TEMP_UPLOAD_PLANILHAS_TESTS": "",
+        "JWT_SECRET": "fedaf7d8863b48e197b9287d492b708e",
+        "ENCRYPTION_KEY": "fedaf7d8863b48e197b9287d492b908e",
+        "SENHA_PADRAO": "IOBSUP3R",
+        "TEMPO_SESSAO_HORAS": "2",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }

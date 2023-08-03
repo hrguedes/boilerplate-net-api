@@ -28,7 +28,7 @@ public class BaseController : ControllerBase
     /// <response code="200">  Regra Cadastrada </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Regras")]
     [HttpPost("regras/cadastro")]
     [ProducesResponseType(typeof(ReturnOk<RegraResponse>), 200)]
@@ -62,7 +62,7 @@ public class BaseController : ControllerBase
     /// <response code="200">  Regra Atualizada </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Regras")]
     [HttpPut("regras/editar")]
     [ProducesResponseType(typeof(ReturnOk<RegraResponse>), 200)]
@@ -96,7 +96,7 @@ public class BaseController : ControllerBase
     /// <response code="200">  Regra Removida </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Regras")]
     [HttpDelete("regras/remover/{id}")]
     [ProducesResponseType(typeof(ReturnOk<RegraResponse>), 200)]
@@ -130,7 +130,7 @@ public class BaseController : ControllerBase
     /// <response code="200">Lista de regras </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Regras")]
     [HttpPost("regras/listar")]
     [ProducesResponseType(typeof(ReturnOk<ListarRegrasResponse>), 200)]
@@ -164,7 +164,7 @@ public class BaseController : ControllerBase
     /// <response code="200"> Detalhes Regra </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Regras")]
     [HttpGet("regras/detalhes/{id}")]
     [ProducesResponseType(typeof(ReturnOk<RegraResponse>), 200)]
@@ -202,7 +202,7 @@ public class BaseController : ControllerBase
     /// <response code="200">  Tela Cadastrada </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Telas")]
     [HttpPost("telas/cadastro")]
     [ProducesResponseType(typeof(ReturnOk<TelaResponse>), 200)]
@@ -236,7 +236,7 @@ public class BaseController : ControllerBase
     /// <response code="200">  Tela Atualizada </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Telas")]
     [HttpPut("telas/editar")]
     [ProducesResponseType(typeof(ReturnOk<TelaResponse>), 200)]
@@ -270,7 +270,7 @@ public class BaseController : ControllerBase
     /// <response code="200">  Tela Removida </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Telas")]
     [HttpDelete("telas/remover/{id}")]
     [ProducesResponseType(typeof(ReturnOk<TelaResponse>), 200)]
@@ -304,7 +304,7 @@ public class BaseController : ControllerBase
     /// <response code="200"> Listar telas </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Telas")]
     [HttpPost("telas/listar")]
     [ProducesResponseType(typeof(ReturnOk<ListarRegrasResponse>), 200)]
@@ -338,7 +338,7 @@ public class BaseController : ControllerBase
     /// <response code="200"> Detalhes Tela </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Telas")]
     [HttpGet("telas/detalhes/{id}")]
     [ProducesResponseType(typeof(ReturnOk<RegraResponse>), 200)]
@@ -367,7 +367,7 @@ public class BaseController : ControllerBase
     /// <summary>
     ///  Cadastrar novo usuário
     /// </summary>
-    /// <param name="baseService"></param>
+    /// <param name="usuarioService"></param>
     /// <param name="request"></param>
     /// /// <remarks>
     /// POST /api/v1/base/usuario/cadastro
@@ -376,7 +376,7 @@ public class BaseController : ControllerBase
     /// <response code="200"> Usuário cadastrado </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Usuarios")]
     [HttpPost("usuario/cadastro")]
     [ProducesResponseType(typeof(ReturnOk<UsuarioResponse>), 200)]
@@ -401,7 +401,7 @@ public class BaseController : ControllerBase
     /// <summary>
     ///  Editar usuário
     /// </summary>
-    /// <param name="baseService"></param>
+    /// <param name="usuarioService"></param>
     /// <param name="request"></param>
     /// /// <remarks>
     /// POST /api/v1/base/usuario/editar
@@ -410,7 +410,7 @@ public class BaseController : ControllerBase
     /// <response code="200"> Usuário atualizado </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Usuarios")]
     [HttpPut("usuario/editar")]
     [ProducesResponseType(typeof(ReturnOk<UsuarioResponse>), 200)]
@@ -444,7 +444,7 @@ public class BaseController : ControllerBase
     /// <response code="200"> Usuário removido </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Usuarios")]
     [HttpDelete("usuario/remover/{id}")]
     [ProducesResponseType(typeof(ReturnOk<UsuarioResponse>), 200)]
@@ -478,7 +478,7 @@ public class BaseController : ControllerBase
     /// <response code="200"> Lista de Usuários</response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Usuarios")]
     [HttpPost("usuario/listar")]
     [ProducesResponseType(typeof(ReturnOk<ListarRegrasResponse>), 200)]
@@ -512,7 +512,7 @@ public class BaseController : ControllerBase
     /// <response code="200"> Detalhes Regra </response>
     /// <response code="400">Client Error</response>
     /// <response code="500">Server Error (Contact Admin)</response>
-    [Authorize("SUPORTE")]
+    [Authorize(Roles = "AUDITOR")]
     [ApiExplorerSettings(GroupName = "Usuarios")]
     [HttpGet("usuario/detalhes/{id}")]
     [ProducesResponseType(typeof(ReturnOk<RegraResponse>), 200)]

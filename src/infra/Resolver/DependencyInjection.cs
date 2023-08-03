@@ -19,7 +19,10 @@ public static class DependencyInjection
 
         // Services
         services.AddScoped<ICompanyService, CompanyService>();
+        services.AddScoped<IBaseService, BaseService>();
+        services.AddScoped<IUsuarioService, UsuarioService>();
         services.AddScoped<IAutenticarUsuarioService, AutenticarUsuarioService>();
+
 
         // Repositories
         services.AddScoped<ICompanyRepository, CompanyRepository>();

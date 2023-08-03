@@ -14,14 +14,14 @@ public class AutenticaoService
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(LaunchSettings.JWT_SECRET);
         var claims = new List<Claim>();
-        user.Regras.Select(regra => new Claim(ClaimTypes.Role, regra.ToString())).ToList();
-        user.Telas.Select(tela => new Claim(ClaimTypes.Role, tela.ToString())).ToList();
+        user.Regras.ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role.Chave)));
+        user.Telas.ForEach(screen => claims.Add(new Claim(ClaimTypes.Role, screen.Nome)));
         claims.AddRange(new []
         {
-            new Claim(ClaimTypes.Name, user.Nome.ToString()),
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Email, user.Email.ToString()),
-            new Claim(ClaimTypes.WindowsAccountName, user.UsuarioWindows.ToString()),
+            new Claim(ClaimTypes.Name, user.Nome),
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.WindowsAccountName, user.UsuarioWindows),
         });
         var tokenDescriptor = new SecurityTokenDescriptor
         {
