@@ -26,6 +26,7 @@ if you are going to use it, read the code and see if it fits
 - MassTransit for MessageQueue
 - MongoDB Repository
 - Versioning API
+- Autentication (pt-BR)
 
 ## Roadmap
 
