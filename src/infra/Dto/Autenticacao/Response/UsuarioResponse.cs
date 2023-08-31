@@ -10,5 +10,4 @@ public class UsuarioResponse : BaseDto
     public string UsuarioDominio { get; set; }
     public string Login { get; set; }
     public List<RegraResponse> Regras { get; set; }
-    public List<TelaResponse> Telas { get; set; }
 }

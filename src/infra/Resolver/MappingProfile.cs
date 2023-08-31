@@ -20,8 +20,6 @@ public class MappingProfile : Profile
         
         CreateMap<Regra, RegraResponse>().ReverseMap();
         CreateMap<Regra, CadastrarOuEditarRegraRequest>().ReverseMap();
-        CreateMap<Tela, TelaResponse>().ReverseMap();
-        CreateMap<Tela, CadastrarOuEditarTelaRequest>().ReverseMap();
         CreateMap<Usuario, CadastrarUsuarioRequest>().ReverseMap();
         CreateMap<Usuario, UsuarioResponse>().ReverseMap();
     }

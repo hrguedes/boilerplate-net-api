@@ -67,14 +67,6 @@ public class UsuarioService : IUsuarioService
                 novoUsuario.Regras.Add(regra);
             }
         }
-        if (request.Telas.Any())
-        {
-            var telasValidadas = await _baseService.ValidarTelas(request.Telas.ToArray());
-            foreach (var tela in telasValidadas.Where(tela => !tela.RegistroRemovido))
-            {
-                novoUsuario.Telas.Add(tela);
-            }
-        }
         await _usuarioRepository.InsertRecordAsync(novoUsuario);
         return new ReturnOk<UsuarioResponse>(_mapper.Map<UsuarioResponse>(novoUsuario), new[] { "Registro Inserido" });
     }

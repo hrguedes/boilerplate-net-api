@@ -8,5 +8,4 @@ public class CadastrarUsuarioRequest
     public string? Telefone { get; set; }
     public string? UsuarioDominio { get; set; }
     public List<string> Regras { get; set; }
-    public List<string> Telas { get; set; }
 }

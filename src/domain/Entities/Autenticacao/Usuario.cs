@@ -10,12 +10,12 @@ public class Usuario : BaseAudityEntity
     public string UsuarioDominio { get; set; }
     public string Login { get; set; }
     public string Senha { get; set; }
-    public virtual List<Tela> Telas { get; set; }
     public virtual List<Regra> Regras { get; set; }
+    
+    public virtual List<Menu> Menus { get; set; }
 
     public Usuario(string usuarioId) : base(usuarioId)
     {
-        Telas = new List<Tela>();
         Regras = new List<Regra>();
     }
 }

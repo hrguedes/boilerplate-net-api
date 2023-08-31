@@ -11,13 +11,11 @@ namespace Application.Autenticacao;
 public class BaseService : IBaseService
 {
     private readonly IRegraRepository _regraRepository;
-    private readonly ITelaRepository _telaRepository;
     private readonly IMapper _mapper;
 
-    public BaseService(IRegraRepository regraRepository, ITelaRepository telaRepository, IMapper mapper)
+    public BaseService(IRegraRepository regraRepository, IMapper mapper)
     {
         _regraRepository = regraRepository;
-        _telaRepository = telaRepository;
         _mapper = mapper;
     }
 
@@ -37,25 +35,6 @@ public class BaseService : IBaseService
                 regrasValidadas.Add(regra);
         }
         return regrasValidadas;
-    }
-
-    
-
-    /// <summary>
-    /// Validar Telas se existem e estão Ativas
-    /// </summary>
-    /// <param name="telas"></param>
-    /// <returns></returns>
-    public async Task<List<Tela>> ValidarTelas(string[] telas)
-    {
-        var telasValidadads = new List<Tela>();
-        foreach (var item in telas)
-        {
-            var tela = await _telaRepository.BuscarTelaPorNome(item);
-            if (tela != null)
-                telasValidadads.Add(tela);
-        }
-        return telasValidadads;
     }
     #endregion
     
@@ -134,85 +113,5 @@ public class BaseService : IBaseService
         return new ReturnOk<RegraResponse>(_mapper.Map<RegraResponse>(regra), new[] { "Cadastro Removido" });
     }
 
-    public async Task<ReturnOk<TelaResponse>> DetalhesTela(string id)
-    {
-        if (string.IsNullOrEmpty(id))
-            return new ReturnOk<TelaResponse>(null, new[] { "Por favor, informe a Tela ser alterada" }, false, 400);
-        var tela = await _telaRepository.LoadRecordByIdAsync(id);
-        if(tela == null)
-            return new ReturnOk<TelaResponse>(null, new[] { $"A Tela => {id} não foi encontrada" }, false, 400);
-        return new ReturnOk<TelaResponse>(_mapper.Map<TelaResponse>(tela), new[] { "Detalhes Tela" });
-    }
-
-    #endregion
-    
-    #region Telas (CRUD)
-    public async Task<ReturnOk<ListarTelasResponse>> ListarTelas(ListarTelasRequest request)
-    {
-        return new ReturnOk<ListarTelasResponse>(new ListarTelasResponse()
-        {
-            Data = _mapper.Map<List<TelaResponse>>(await _telaRepository.ListarTelas(request.Limit, request.Page)),
-            Limit = request.Limit,
-            Page = request.Page
-        }, new []{ "Registros" });
-    }
-    
-    public async Task<ReturnOk<TelaResponse>> CadastrarTela(CadastrarOuEditarTelaRequest request, string userId)
-    {
-        if (string.IsNullOrEmpty(request.Nome) || string.IsNullOrEmpty(request.Caminho))
-            return new ReturnOk<TelaResponse>(null, new[] { "Por favor, informe o Nome e Caminho da Tela" }, false, 400);
-        var telaJaExiste = await _telaRepository.BuscarTelaPorNome(request.Nome);
-        if(telaJaExiste != null)
-            return new ReturnOk<TelaResponse>(null, new[] { $"A Tela => {request.Nome} já existe" }, false, 400);
-        telaJaExiste = await _telaRepository.BuscarUsuarioPorCaminhho(request.Caminho);
-        if(telaJaExiste != null)
-            return new ReturnOk<TelaResponse>(null, new[] { $"O Caminho informado => {request.Caminho} já existe" }, false, 400);
-
-        var novaTela = new Tela(userId)
-        {
-            Nome = request.Nome,
-            Caminho = request.Caminho
-        };
-        await _telaRepository.InsertRecordAsync(novaTela);
-
-        return new ReturnOk<TelaResponse>(_mapper.Map<TelaResponse>(novaTela), new[] { "Cadastro Realizado" });
-    }
-
-    public async Task<ReturnOk<TelaResponse>> EditarTela(CadastrarOuEditarTelaRequest request, string userId)
-    {
-        if (string.IsNullOrEmpty(request.Id))
-            return new ReturnOk<TelaResponse>(null, new[] { "Por favor, informe a Tela a ser alterada" }, false, 400);
-        var tela = await _telaRepository.LoadRecordByIdAsync(request.Id);
-        if(tela == null)
-            return new ReturnOk<TelaResponse>(null, new[] { $"A Tela => {request.Id} não foi encontrada" }, false, 400);
-        var telaJaExiste = await _telaRepository.BuscarTelaPorNome(request.Nome);
-        if(telaJaExiste != null && telaJaExiste.Id != request.Id)
-            return new ReturnOk<TelaResponse>(null, new[] { $"A Tela => {request.Nome} já existe" }, false, 400);
-        telaJaExiste = await _telaRepository.BuscarUsuarioPorCaminhho(request.Caminho);
-        if(telaJaExiste != null && telaJaExiste.Id != request.Id)
-            return new ReturnOk<TelaResponse>(null, new[] { $"O Caminho informado => {request.Caminho} já existe" }, false, 400);
-        
-        
-        tela.UsuarioAtualizacaoId = userId;
-        var telaAtualizada = _mapper.Map(request, tela);
-        await _telaRepository.UpdateRecordAsync(telaAtualizada.Id, telaAtualizada);
-        
-        return new ReturnOk<TelaResponse>(_mapper.Map<TelaResponse>(telaAtualizada), new[] { "Cadastro Atualizado" });
-    }
-
-    public async Task<ReturnOk<TelaResponse>> RemoverTela(string id, string userId)
-    {
-        if (string.IsNullOrEmpty(id))
-            return new ReturnOk<TelaResponse>(null, new[] { "Por favor, informe a Tela a ser removida" }, false, 400);
-        var tela = await _telaRepository.LoadRecordByIdAsync(id);
-        if(tela == null)
-            return new ReturnOk<TelaResponse>(null, new[] { $"A Tela => {id} não foi encontrada" }, false, 400);
-        
-        tela.RegistroRemovido = true;
-        tela.UsuarioAtualizacaoId = userId;
-        await _telaRepository.UpdateRecordAsync(id, tela);
-        
-        return new ReturnOk<TelaResponse>(_mapper.Map<TelaResponse>(tela), new[] { "Cadastro Removido" });
-    }
     #endregion
 }

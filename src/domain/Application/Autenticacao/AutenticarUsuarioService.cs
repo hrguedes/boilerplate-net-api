@@ -62,9 +62,80 @@ public class AutenticarUsuarioService : IAutenticarUsuarioService
             SessaoId = dadosSessao.Id,
             UsuarioWindows = usuario.UsuarioDominio,
             ValidoAte = dadosSessao.Termino,
-            Telas = _mapper.Map<List<TelaResponse>>(usuario.Telas),
-            Regras = _mapper.Map<List<RegraResponse>>(usuario.Regras)
-            
+            Regras = _mapper.Map<List<RegraResponse>>(usuario.Regras),
+            Menus = new List<MenuResponse>()
+            {
+                new()
+                {
+                    Nome = "Home",
+                    Items = new List<MenuResponse>()
+                    {
+                        new()
+                        {
+                            Nome = "Dashboard",
+                            Regra = "",
+                            Icone = "house",
+                            Url = "/dasboard"
+                        }
+                    }
+                },
+                new()
+                {
+                    Nome = "Company",
+                    Regra = "SALES",
+                    Icone = "gear",
+                    Items = new List<MenuResponse>()
+                    {
+                        new()
+                        {
+                            Nome = "Create",
+                            Regra = "SALES",
+                            Icone = "builder",
+                            Url = "/company/create"
+                        },
+                        new()
+                        {
+                            Nome = "List",
+                            Regra = "SALES",
+                            Icone = "builder",
+                            Url = "/company/list"
+                        }
+                    }
+                },
+                new()
+                {
+                    Nome = "Settings",
+                    Regra = "ROOT_ADMIN",
+                    Icone = "gear",
+                    Items = new List<MenuResponse>()
+                    {
+                        new()
+                        {
+                            Nome = "Roles",
+                            Regra = "ROOT_ADMIN",
+                            Icone = "law",
+                            Url = "/settings/roles",
+                            Items = new List<MenuResponse>()
+                            {
+                                new()
+                                {
+                                    Nome = "Create",
+                                    Regra = "ROOT_ADMIN",
+                                    Icone = "plus-add",
+                                    Url = "/settings/roles/create"
+                                },
+                                new()
+                                {
+                                    Nome = "List",
+                                    Regra = "ROOT_ADMIN",
+                                    Icone = "list",
+                                    Url = "/settings/roles/list"
+                                }
+                            }
+                        }
+                    }
+                },
+            }
         }, new []{ "Usuário Logado com sucesso"});
     }
 }

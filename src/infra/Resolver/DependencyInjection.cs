@@ -28,7 +28,6 @@ public static class DependencyInjection
         services.AddScoped<ICompanyRepository, CompanyRepository>();
         services.AddScoped<IUsuarioRepository, UsuarioRepository>();
         services.AddScoped<IRegraRepository, RegraRepository>();
-        services.AddScoped<ITelaRepository, TelaRepository>();
         services.AddScoped<ISessaoRepository, SessaoRepository>();
         
         // Integrations

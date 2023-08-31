@@ -15,7 +15,6 @@ public class AutenticaoService
         var key = Encoding.ASCII.GetBytes(LaunchSettings.JWT_SECRET);
         var claims = new List<Claim>();
         user.Regras.ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role.Chave)));
-        user.Telas.ForEach(screen => claims.Add(new Claim(ClaimTypes.Role, screen.Nome)));
         claims.AddRange(new []
         {
             new Claim(ClaimTypes.Name, user.Nome),

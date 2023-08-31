@@ -10,5 +10,5 @@ public class UsuarioLogadoResponse
     public DateTime ValidoAte { get; set; }
     public string SessaoId { get; set; }
     public List<RegraResponse> Regras { get; set; }
-    public List<TelaResponse> Telas { get; set; }
+    public List<MenuResponse> Menus { get; set; }
 }
